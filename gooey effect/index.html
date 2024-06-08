@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      .page1 {
+        height: 100%;
+        width: 100%;
+        background-color: aliceblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .page1 .hero {
+        background-color: red;
+      }
+      .page1 .hero h1 {
+        font-size: 4vw;
+        font-weight: 500;
+      }
+      img {
+        width: 10vw;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        position: absolute;
+        transition: all 0.2s linear;
+      }
+      .line3 {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page1">
+      <div class="hero">
+        <div class="line1"><h1>Hy i am line 1</h1></div>
+        <div class="line2"><h1>Hy i am line 2</h1></div>
+        <div class="line3"><h1>Hy i am line 3</h1></div>
+        <img
+          id="followImage"
+          src="https://obys.agency/wp-content/uploads/2022/03/Flag.jpg"
+          alt="Flag"
+        />
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const img = document.getElementById("followImage");
+        const line3 = document.querySelector(".line3");
+
+        line3.addEventListener("mousemove", (e) => {
+          const rect = line3.getBoundingClientRect();
+          img.style.left = e.clientX + "px";
+          img.style.top = e.clientY + "px";
+          img.style.opacity = 1;
+        });
+
+        line3.addEventListener("mouseleave", () => {
+          img.style.opacity = 0;
+        });
+      });
+    </script>
+  </body>
+</html>
